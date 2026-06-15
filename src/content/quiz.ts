@@ -2,8 +2,9 @@ import type { Question } from './quizTypes'
 
 /**
  * The 25-question Block 1 and 2 assessment.
- * Balanced across the two blocks, 20 intermediate and 5 difficult.
- * One option per question is correct (a dev check enforces this).
+ * Pitched for a non-technical leadership audience: 23 intermediate and 2
+ * difficult, leaning to Block 1 concepts (17 Block 1, 8 Block 2), light on
+ * protocol detail. One option per question is correct (a dev check enforces it).
  * Grounded in the workshop content. Proof-point questions cite sources.ts.
  */
 export const QUESTIONS: Question[] = [
@@ -341,6 +342,162 @@ export const QUESTIONS: Question[] = [
     source: 'Siemens, Electronics Works Amberg',
   },
   {
+    id: 'b1-arvr',
+    block: 1,
+    topic: 'Pillar: Augmented and Virtual Reality',
+    difficulty: 'intermediate',
+    prompt:
+      'An operator sees the next step and the torque spec overlaid on the part through a headset. Which pillar is this?',
+    options: [
+      {
+        text: 'Augmented and Virtual Reality',
+        correct: true,
+        explanation:
+          'Guidance shown in front of the operator is AR and VR. Its strongest use is guided work and training on complex, high-variant builds.',
+      },
+      {
+        text: 'Industrial IoT',
+        correct: false,
+        explanation:
+          'IIoT is sensors streaming machine data, not instructions shown to a person.',
+      },
+      {
+        text: 'Additive Manufacturing',
+        correct: false,
+        explanation: 'Additive is 3D printing of parts and fixtures, not a headset overlay.',
+      },
+      {
+        text: 'Cloud Computing',
+        correct: false,
+        explanation: 'Cloud is remote storage and compute, not the operator overlay.',
+      },
+    ],
+  },
+  {
+    id: 'b1-bigdata',
+    block: 1,
+    topic: 'Pillar: Big Data and Analytics',
+    difficulty: 'intermediate',
+    prompt:
+      "Spotting a defect pattern across thousands of tractors' build records, before it grows into a wave of warranty claims, is mainly which pillar?",
+    options: [
+      {
+        text: 'Big Data and Analytics',
+        correct: true,
+        explanation:
+          'Finding patterns across many machines, shifts or suppliers is Big Data and Analytics. John Deere paid about 951 million dollars in warranty claims in 2022, so catching a pattern early is worth a lot.',
+      },
+      {
+        text: 'Augmented and Virtual Reality',
+        correct: false,
+        explanation: 'AR and VR guide people, they do not analyse build records.',
+      },
+      {
+        text: 'Additive Manufacturing',
+        correct: false,
+        explanation: 'Additive prints parts, it does not find defect patterns.',
+      },
+      {
+        text: 'Cybersecurity',
+        correct: false,
+        explanation: 'Cybersecurity protects systems, it does not analyse quality data.',
+      },
+    ],
+    source: 'Warranty Week, heavy-equipment warranty review',
+  },
+  {
+    id: 'b1-cloud',
+    block: 1,
+    topic: 'Pillar: Cloud Computing',
+    difficulty: 'intermediate',
+    prompt: 'What is the main advantage of putting plant data in the cloud?',
+    options: [
+      {
+        text: 'One shared, always-available copy that many sites and teams can use, instead of many separate local copies',
+        correct: true,
+        explanation:
+          'The cloud gives on-demand storage and compute that several plants and the group can read from, rather than data trapped on one local server.',
+      },
+      {
+        text: 'It makes the machines on the line run faster',
+        correct: false,
+        explanation: 'Cloud is about storage and compute, it does not speed up the machines.',
+      },
+      {
+        text: 'It removes the need for any security',
+        correct: false,
+        explanation: 'Cloud needs strong security, it does not remove the need for it.',
+      },
+      {
+        text: 'It only works when the internet is down',
+        correct: false,
+        explanation: 'The opposite is true, cloud needs a network link.',
+      },
+    ],
+  },
+  {
+    id: 'b1-ai-early',
+    block: 1,
+    topic: 'AI in manufacturing',
+    difficulty: 'intermediate',
+    prompt:
+      'Why is it better to catch a defect with a camera and AI check early in the line rather than at final inspection?',
+    options: [
+      {
+        text: 'It is caught before more cost and work are added on top of the faulty part',
+        correct: true,
+        explanation:
+          'Catching it early means you are not reworking or scrapping a unit that has had more value built onto the problem.',
+      },
+      {
+        text: 'Because AI is cheaper than inspectors',
+        correct: false,
+        explanation: 'The cost of people is not the point, catching it early is.',
+      },
+      {
+        text: 'So the line can run with no operators',
+        correct: false,
+        explanation: 'The aim is fewer escapes, not removing people.',
+      },
+      {
+        text: 'Because final inspection cannot find defects',
+        correct: false,
+        explanation: 'Final inspection can find them, but later and at higher cost.',
+      },
+    ],
+  },
+  {
+    id: 'b1-leader-lens',
+    block: 1,
+    topic: 'Leading with data',
+    difficulty: 'intermediate',
+    prompt:
+      'Before adding sensors to a machine, what is the most useful question for a leader to ask?',
+    options: [
+      {
+        text: 'What decision will this data change, and who owns that decision?',
+        correct: true,
+        explanation:
+          'Data with no decision behind it is just a dashboard. The value comes from a decision someone will own and act on.',
+      },
+      {
+        text: 'How many sensors can we physically fit?',
+        correct: false,
+        explanation: 'The number of sensors is not the point, the decision they serve is.',
+      },
+      {
+        text: 'Which sensor vendor is the cheapest?',
+        correct: false,
+        explanation: 'Price matters later, but it does not tell you if the data will change anything.',
+      },
+      {
+        text: 'How much data can we store?',
+        correct: false,
+        explanation: 'Storage is a detail, not the reason to collect the data.',
+      },
+    ],
+  },
+  {
     id: 'b1-three-ds',
     block: 1,
     topic: 'The Three Ds',
@@ -535,94 +692,33 @@ export const QUESTIONS: Question[] = [
     ],
   },
   {
-    id: 'b2-modbus',
+    id: 'b2-one-source',
     block: 2,
-    topic: 'Modbus',
+    topic: 'The data journey',
     difficulty: 'intermediate',
     prompt:
-      'Why is Modbus still everywhere on older meters and testers, and what does it lack?',
+      'In the data journey, why collect a reading once near the machine and send it up one path?',
     options: [
       {
-        text: 'It is simple and cheap with numbered registers, but it has no information model and no built-in security',
+        text: 'So the same number is not copied and re-keyed between separate systems, and everyone works from one trustworthy source',
         correct: true,
         explanation:
-          'Modbus from 1979 is easy and ubiquitous, but a register is just a number with no meaning attached and no protection.',
+          'Collected once and flowed up one path, the data is not re-typed into silos, so the floor, quality and the business all see the same number.',
       },
       {
-        text: 'It is modern and encrypted by default',
+        text: 'So the machine on the line runs faster',
         correct: false,
-        explanation: 'Modbus has no built-in security at all.',
+        explanation: 'Collecting data does not change how fast the machine runs.',
       },
       {
-        text: 'It is a vehicle bus for ECUs',
+        text: 'So the data can be deleted sooner to save space',
         correct: false,
-        explanation: 'That is CAN, not Modbus.',
+        explanation: 'The point is a single trusted source, not deleting data.',
       },
       {
-        text: 'It is a wireless mesh protocol',
+        text: 'So no one needs dashboards anymore',
         correct: false,
-        explanation: 'Modbus is a wired serial or TCP protocol, not a radio mesh.',
-      },
-    ],
-  },
-  {
-    id: 'b2-can',
-    block: 2,
-    topic: 'CAN bus',
-    difficulty: 'intermediate',
-    prompt: 'How does a CAN bus carry messages between ECUs and test rigs?',
-    options: [
-      {
-        text: 'As a broadcast bus where every node hears every message, ordered by priority, with strong error detection',
-        correct: true,
-        explanation:
-          'CAN is a rugged broadcast bus built for vehicles. Messages carry a priority, and error detection survives electrical noise.',
-      },
-      {
-        text: 'Point to point, each device addressed individually',
-        correct: false,
-        explanation: 'CAN has no per-device addressing, every node hears the bus.',
-      },
-      {
-        text: 'Over Wi-Fi between controllers',
-        correct: false,
-        explanation: 'CAN is a wired bus, not a wireless link.',
-      },
-      {
-        text: 'Only through Ignition',
-        correct: false,
-        explanation:
-          'CAN runs between the devices themselves, independent of Ignition.',
-      },
-    ],
-  },
-  {
-    id: 'b2-uds',
-    block: 2,
-    topic: 'UDS diagnostics',
-    difficulty: 'intermediate',
-    prompt: 'At end-of-line test, what does UDS add on top of CAN?',
-    options: [
-      {
-        text: 'A standard diagnostic language to read and clear fault codes, read parameters and run self-tests',
-        correct: true,
-        explanation:
-          'UDS turns a memory-dependent check into a repeatable standard sequence, reading and clearing fault codes and running routines.',
-      },
-      {
-        text: 'It encrypts the CAN bus',
-        correct: false,
-        explanation: 'UDS is a diagnostic service, not encryption.',
-      },
-      {
-        text: 'It replaces the CAN wiring with Ethernet',
-        correct: false,
-        explanation: 'UDS runs on top of CAN, it does not replace the wiring.',
-      },
-      {
-        text: 'It is a wireless protocol',
-        correct: false,
-        explanation: 'UDS is a diagnostic standard carried over CAN, not a radio.',
+        explanation: 'People still use dashboards, they just trust one source behind them.',
       },
     ],
   },
@@ -715,103 +811,6 @@ export const QUESTIONS: Question[] = [
         text: 'Analytics, then Kafka, then the edge',
         correct: false,
         explanation: 'Analytics is the top consumer, not the start of the path.',
-      },
-    ],
-  },
-  {
-    id: 'b2-rabbit-vs-kafka',
-    block: 2,
-    topic: 'RabbitMQ vs Kafka',
-    difficulty: 'difficult',
-    prompt:
-      'A quality model must retrain by replaying months of past test data. Which broker fits as the backbone, and why?',
-    options: [
-      {
-        text: 'Kafka, because it retains the stream on a log so the whole history can be replayed',
-        correct: true,
-        explanation:
-          'Kafka keeps events after they are read. RabbitMQ deletes each message once it is consumed and acknowledged, so the history would be gone.',
-      },
-      {
-        text: 'RabbitMQ, because it keeps every message forever',
-        correct: false,
-        explanation:
-          'RabbitMQ removes a message after it is acknowledged, it is not a retained log.',
-      },
-      {
-        text: 'Either one, they behave identically',
-        correct: false,
-        explanation:
-          'They differ on the key point: retain and replay versus consume and delete.',
-      },
-      {
-        text: 'Neither, brokers cannot store data',
-        correct: false,
-        explanation: 'Kafka is exactly a broker designed to retain and replay.',
-      },
-    ],
-  },
-  {
-    id: 'b2-opcua-vs-modbus',
-    block: 2,
-    topic: 'OPC UA vs Modbus security',
-    difficulty: 'difficult',
-    prompt:
-      'A vendor device speaks Modbus and sits on a network shared with untrusted users. What is the risk, and what would OPC UA add?',
-    options: [
-      {
-        text: 'Modbus has no built-in security, so anyone on the network can read or write registers; OPC UA adds authentication, encryption and self-describing data',
-        correct: true,
-        explanation:
-          'Modbus trusts the network. OPC UA brings identity and encryption, and turns register 40001 into spindle temperature with type and units.',
-      },
-      {
-        text: 'There is no risk, Modbus encrypts traffic by default',
-        correct: false,
-        explanation: 'Modbus has no encryption or authentication of its own.',
-      },
-      {
-        text: 'The only fix is to unplug the device',
-        correct: false,
-        explanation:
-          'Segmentation plus a secure protocol like OPC UA is the real answer.',
-      },
-      {
-        text: 'OPC UA would make it slower with no other benefit',
-        correct: false,
-        explanation: 'OPC UA adds security and meaning, not just overhead.',
-      },
-    ],
-  },
-  {
-    id: 'b2-can-arbitration',
-    block: 2,
-    topic: 'CAN arbitration',
-    difficulty: 'difficult',
-    prompt:
-      'Two ECUs on the same CAN bus start sending at the same instant, one with a lower message ID than the other. What happens?',
-    options: [
-      {
-        text: 'The lower ID wins the bus because it has higher priority; the other backs off and retries, and no data is lost',
-        correct: true,
-        explanation:
-          'CAN arbitration is non-destructive. The higher-priority (lower ID) message proceeds and the loser simply tries again.',
-      },
-      {
-        text: 'Both messages collide and are destroyed',
-        correct: false,
-        explanation:
-          'CAN arbitration is designed so the winning message is not corrupted.',
-      },
-      {
-        text: 'The higher ID always wins',
-        correct: false,
-        explanation: 'Lower numeric ID means higher priority on CAN.',
-      },
-      {
-        text: 'The bus shuts down until reset',
-        correct: false,
-        explanation: 'Arbitration resolves it instantly without stopping the bus.',
       },
     ],
   },
