@@ -4,7 +4,13 @@ import { QRCodeSVG } from 'qrcode.react'
 import { useQuiz } from '../store/quiz'
 import { QUESTIONS } from '../content/quiz'
 import { FEATURES } from '../config'
-import { Tractor, ArrowRight, Check } from '../components/icons'
+import { Tractor, ArrowRight, Check, Compass } from '../components/icons'
+
+const LINKS = [
+  { label: 'Industry 4.0, the foundations', url: 'https://jdi4app1.netlify.app/' },
+  { label: 'The ten technology pillars', url: 'https://i4techpillars.netlify.app/' },
+  { label: 'Integration and the data journey', url: 'https://jdintegration.netlify.app/' },
+]
 
 export function StartScreen() {
   const navigate = useNavigate()
@@ -57,6 +63,42 @@ export function StartScreen() {
       </header>
 
       <main className="mx-auto max-w-md px-4 py-7">
+        <div className="mb-4 rounded-2xl bg-jd-green-mist p-5 ring-1 ring-jd-green/20">
+          <div className="mb-1 flex items-center gap-2">
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-jd-green text-white">
+              <Compass size={17} />
+            </span>
+            <span className="text-sm font-extrabold text-jd-green-deep">
+              Revise the concepts first
+            </span>
+          </div>
+          <p className="mb-3 text-sm text-ink-soft">
+            Before the {QUESTIONS.length} questions, walk back through the training
+            apps from the sessions. Each opens in a new tab.
+          </p>
+          <div className="space-y-2">
+            {LINKS.map((l) => (
+              <a
+                key={l.url}
+                href={l.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-xl bg-white px-3.5 py-2.5 ring-1 ring-line transition hover:ring-jd-green"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-sm font-bold text-jd-green-dark">
+                    {l.label}
+                  </span>
+                  <ArrowRight size={15} className="shrink-0 text-jd-green" />
+                </div>
+                <div className="mt-0.5 truncate text-[11px] text-ink-soft">
+                  {l.url}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
         <div className="rounded-2xl bg-white p-6 shadow-[var(--shadow-card)] ring-1 ring-line">
           <div className="mb-5 flex items-center gap-3">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-jd-green text-white">
